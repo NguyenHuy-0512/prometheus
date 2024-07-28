@@ -1,1 +1,3 @@
 # prometheus-kafka
+
+- prometheus.yml
