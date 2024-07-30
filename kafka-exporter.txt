@@ -11,3 +11,18 @@ wget https://raw.githubusercontent.com/prometheus/jmx_exporter/main/example_conf
 # Khởi động lại:
 sudo systemctl daemon-reload
 sudo systemctl restart kafka
+
+
+# Giám sát service bang Prometheus:
+Kafka:
+- Health check:
+kafka_server_replicamanager_leadercount: Số lượng partition mà broker hiện tại đang làm leader
+kafka_controller_kafkacontroller_activecontrollercount: Số lượng Kafka controller đang hoạt động trong cluster
+kafka_server_replicamanager_partitioncount: Tổng số lượng partition mà broker cụ thể đang phục vụ (bao gồm cả partition mà broker đang là leader và follower).
+
+- Throughput In/Out:
+kafka_server_brokertopicmetrics_messagesin_total: Tổng số lượng messages đã được broker nhận vào
+	
+- Cluster Metrics:
+kafka_controller_controllerstats_leaderelectionrateandtimems: tỷ lệ và thời gian bầu chọn leader
+kafka_controller_kafkacontroller_offlinepartitionscount: số lượng partitions đang offline
